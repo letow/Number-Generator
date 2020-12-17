@@ -3,14 +3,15 @@
 import sys, random
 from PyQt5.QtWidgets import QWidget, QPushButton, QInputDialog, QApplication, QLabel
 
-
+#класс генератора
 class Generator(QWidget):
     def __init__(self):
         super().__init__()
         self.initUI()
 
-
+    # настройка интерфейса
     def initUI(self):
+        # и объявление пары переменных
         self.b = []
         self.i = 0
         self.lbl1 = QLabel('', self)
@@ -37,7 +38,7 @@ class Generator(QWidget):
         self.setGeometry(800, 400, 290, 150)
         self.setWindowTitle('Number Generator')
         self.show()
-
+    # диалоговое окно, спрашивающее число у юзера
     def showDialog(self):
         number, ok = QInputDialog.getInt(self, 'Input Dialog', 'Enter your number:')
         if ok:
@@ -49,7 +50,7 @@ class Generator(QWidget):
             self.lbl3.clear()
 
 
-
+    # ф-ция генерирующая числа из диапазона и проверяющая число на "новизну"
     def bongiorno(self):
         number = int(self.lbl1.text())
         a = random.randint(1, number)
@@ -78,7 +79,7 @@ class Generator(QWidget):
             self.btn2.setEnabled(False)
             self.i = 0
             self.b.clear()
-
+# инициализация
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = Generator()
